@@ -11,6 +11,8 @@ var postSchema = new schema({
     permalink : {type : String},
     tags : {type : String},
     keywords : {type : String},
-    author : {type : schema.objectId, ref: 'users'},
+    author : {type : schema.ObjectId, ref: 'users'},
     datePublished : {type : Date, default : Date.now}
 });
+
+module.exports = mongoose.model('post', postSchema, 'posts');
