@@ -1,0 +1,22 @@
+{
+  "name": "blogapplication",
+  "version": "1.0.0",
+  "description": "Blog Application is a simple application in NodeJS",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.4",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ayeni Olusegun",
+  "license": "MIT"
+}
