@@ -13,5 +13,4 @@ var postSchema = new schema({
     keywords : {type : String},
     author : {type : schema.objectId, ref: 'users'},
     datePublished : {type : Date, default : Date.now}
-
 });
