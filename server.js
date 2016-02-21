@@ -8,7 +8,10 @@ var cors = require('cors');
 var port = process.env.port || 2000;
 var app = express();
 
+var db = require("./config/db");
 var routes = require('./server/routes');
+
+db.dbconnect();
 
 app.use(cors());
 app.use(morgan('dev'));
