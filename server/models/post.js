@@ -3,7 +3,7 @@
  */
 
 var mongoose = require('mongoose');
-var schema = new mongoose.Schema;
+var schema =  mongoose.Schema;
 
 var postSchema = new schema({
     title : {type : String},
