@@ -33,7 +33,7 @@ module.exports = {
             return res.status(200).json(posts);
         });
     },
-    updateArticles : function(req, res){
+    updateArticle : function(req, res){
         postModel.findOne({_id : req.params.id}).exec(function(err, post){
             if(err){
                 return res.status(404).json({success : false, message : "Post's Detail Not Found", err : err});
@@ -52,6 +52,15 @@ module.exports = {
                 return res.json({success : true, message : "Update Successful"});
             })
 
-        })
+        });
+    },
+    showArticle : function(req, res){
+        postModel.findOne({_id : req.params.id}).exec(function(err, post){
+            if(err){
+                return res.status(404).json({success : false, message : "Post's Detail Not Found", err : err});
+            }
+
+            return res.json(post);
+        });
     }
 }
