@@ -22,7 +22,7 @@ module.exports = {
         });
     },
     getArticles : function(req, res){
-        postModel.find({}, function(err, posts){
+        postModel.find({}).populate('author').exec(function(err, posts){
             if(err){
                 console.log(err);
                 return res.status(400).json({err : err});
@@ -53,7 +53,7 @@ module.exports = {
         });
     },
     showArticle : function(req, res){
-        postModel.findOne({_id : req.params.id}).exec(function(err, post){
+        postModel.findOne({_id : req.params.id}).populate('author').exec(function(err, post){
             if(err){
                 return res.status(404).json({success : false, message : "Post's Detail Not Found", err : err});
             }

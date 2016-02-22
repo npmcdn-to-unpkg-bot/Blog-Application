@@ -11,7 +11,7 @@ var postSchema = new schema({
     permalink : {type : String},
     tags : {type : String},
     keywords : {type : String},
-    author : {type : schema.ObjectId, ref: 'users'},
+    author : {type : schema.ObjectId, ref: 'User'},
     datePublished : {type : Date, default : Date.now}
 });
 

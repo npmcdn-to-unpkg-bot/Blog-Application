@@ -20,5 +20,14 @@ module.exports = {
             return res.json({success : true, message : "Comment Added"});
         });
     },
+    getCommentsByBlogId: function(req, res){
+        commentModel.find({blogId : req.params.id}, function(err, comments){
+           if(err){
+               console.log(err);
+               return res.status(400).json({err : err});
+           }
+           return res.json(comments);
+        });
+    }
 
 }
