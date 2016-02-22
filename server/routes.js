@@ -7,4 +7,5 @@ module.exports = function(app){
     app.get('/api/posts', postController.getArticles);
     app.put('/api/posts/:id', userController.tokenMiddleware, postController.updateArticle);
     app.get('/api/posts/:id', postController.showArticle);
+    app.delete('/api/posts/:id', postController.destroyArticle);
 }

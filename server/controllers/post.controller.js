@@ -62,5 +62,13 @@ module.exports = {
 
             return res.json(post);
         });
+    },
+    destroyArticle : function(req, res){
+        postModel.remove({_id : req.params.id}, function(err, post){
+            if(err){
+                return res.status(404).json({success : false, message : "Post's Detail Not Found", err : err});
+            }
+            return res.json({success : true, message : "Delete Successful"});
+        })
     }
 }
