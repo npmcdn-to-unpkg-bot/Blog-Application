@@ -20,8 +20,6 @@ module.exports = {
 
             return res.json({success : true, message : "Post Added"});
         });
-
-        return res.status(200);
     },
     getArticles : function(req, res){
         postModel.find({}, function(err, posts){
