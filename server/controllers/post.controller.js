@@ -23,5 +23,14 @@ module.exports = {
 
         return res.status(200);
     },
+    getArticles : function(req, res){
+        postModel.find({}, function(err, posts){
+            if(err){
+                console.log(err);
+                return res.status(400).json({err : err});
+            }
 
+            return res.status(200).json(posts);
+        });
+    }
 }
