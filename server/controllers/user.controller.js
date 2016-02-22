@@ -19,7 +19,7 @@ module.exports = {
                     return res.json({msg : "Username already exists"})
                 }
                 console.log(err);
-                return res.status(404).json({err : err});
+                return res.status(400).json({err : err});
             }
 
             return res.json({ success: true, message: "User Registered successfully."});
@@ -40,7 +40,11 @@ module.exports = {
                     }
 
                     if(result){
-                        var token = jwt.sign(seenUser[0], secret.sessionSecret, { expiresInMinutes : 1440 });
+                        var token = jwt.sign({
+                            id: seenUser[0]._id,
+                            username : seenUser[0].username,
+                            name : seenUser[0].name
+                        }, secret.sessionSecret, { expiresIn : (1440 * 60) });
                         var currentUser = _.pick(seenUser[0], '_id', 'name', 'username');
                         return res.json({success : true, currentUser : currentUser, token : token});
                     }else{
