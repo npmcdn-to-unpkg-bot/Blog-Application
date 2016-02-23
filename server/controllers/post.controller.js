@@ -68,7 +68,7 @@ module.exports = {
                 });
             },
             function(callBack){
-                commentModel.find({blogId : postId}).exec(function(err, comments){
+                commentModel.find({blogId : postId}).sort({datePublished: 'asc'}).exec(function(err, comments){
                     if(err){
                         callBack(err);
                     }
