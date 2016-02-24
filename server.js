@@ -17,7 +17,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
-//app.use(express.static(__dirname + "/public/ASM"));
+app.use(express.static(__dirname + "/public"));
 
 
 routes(app);
