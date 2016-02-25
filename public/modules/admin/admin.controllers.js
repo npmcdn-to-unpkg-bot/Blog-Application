@@ -1,5 +1,5 @@
 angular.module('blogger.admin.controller', [])
-    .cotroller('AdminController', ['$scope', function($scope){
+    .controller('AdminController', ['$scope', function($scope){
 
     }]).controller('postCreationController', ['$scope', function($scope){
 
