@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="row">
+    <div class="col-xs-3">
+        <ul class="nav nav-pills nav-stacked on-click-make-active">
+            <li>
+                <a ui-sref="admin.viewAll">View All Posts</a>
+            </li>
+            <li class="active">
+                <a ui-sref="admin.postNew">Add Post</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-9 border-left">
+        <div ui-view></div> <!--The nested views are loaded here -->
+    </div>
+</div>
