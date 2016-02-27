@@ -1,39 +1,7 @@
 <div class="row">
     <div class="col-xs-8">
-        <form name="newPostForm" class="form-horizontal" novalidate role="form">
-            <div class="form-group" ng-class="{'has-error':newPostForm.title.$dirty && newPostForm.title.$invalid}">
-                <label for="title" class="col-sm-2 control-label">Post Title</label>
-                <div class="col-sm-10">
-                    <input type="text" name="title" ng-model="post.title" ng-required="true" class="form-control" id="title" placeholder="Title" />
-                    <span class="error-message" ng-show="newPostForm.title.$dirty && newPostForm.title.$invalid">Title is Mandatory</span>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{'has-error':newPostForm.content.$dirty && newPostForm.content.$invalid}">
-                <label for="content" class="col-sm-2 control-label">Post Title</label>
-                <div class="col-sm-10">
-                    <textarea cols="8" rows="6" name="content" class="form-control" ng-model="post.content" ng-required="true" id="content" placeholder="Content"></textarea>
-                    <span class="error-message" ng-show="newPostForm.content.$dirty && newPostForm.content.$invalid">You need to have some content!</span>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{'has-error':newPostForm.tags.$dirty && newPostForm.tags.$invalid}">
-                <label for="tags" class="col-sm-2 control-label">Tags</label>
-                <div class="col-sm-10">
-                    <input type="text" name="tags" ng-model="post.tags" ng-pattern="/^[\w,]+$/" class="form-control" id="tags" placeholder="Comma separated tags" />
-                    <span class="error-message" ng-show="newPostForm.tags.$dirty && newPostForm.tags.$invalid">Sorry! No Special Characters allowed here</span>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{'has-error':newPostForm.keywords.$dirty && newPostForm.keywords.$invalid}">
-                <label for="keywords" class="col-sm-2 control-label">Keywords</label>
-                <div class="col-sm-10">
-                    <input type="text" name="keywords" ng-model="post.keywords" ng-pattern="/^[\w,]+$/" class="form-control" id="keywords" placeholder="Comma separated keywords" />
-                    <span class="error-message" ng-show="newPostForm.keywords.$dirty && newPostForm.keywords.$invalid">Sorry! No Special Characters allowed here</span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success" ng-disabled="newPostForm.$invalid">Add Post</button>
-                </div>
-            </div>
+        <form name="newPostForm" ng-switch="savePost()" class="form-horizontal" novalidate role="form">
+            <div ng-include="'/modules/admin/views/_form.html'" ></div>
         </form>
     </div>
 </div>
