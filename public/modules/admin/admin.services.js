@@ -16,6 +16,15 @@ angular.module('blogger.admin.service', []).
             },
             getPost : function(){
                 return $http.get('/api/posts');
+            },
+            getEachPostDetails : function(postId, cb){
+                $http.get('/api/posts/' + postId).then(function(response){
+                    if(response.data.success){
+                       cb(true, response.data);
+                    } else {
+                        cb(false, response.data);
+                    }
+                });
             }
         }
     }]).service('popupService', ['$window',function($window){

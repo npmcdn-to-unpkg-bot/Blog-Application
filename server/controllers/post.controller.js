@@ -98,7 +98,7 @@ module.exports = {
                 author_username : results[0].author.username
             };
             postData.comments = results[1] || [];
-            return res.status(200).json(postData);
+            return res.status(200).json({success : true , post : postData});
         });
     },
     destroyArticle : function(req, res){
