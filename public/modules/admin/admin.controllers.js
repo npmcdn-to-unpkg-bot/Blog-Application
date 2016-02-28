@@ -22,9 +22,11 @@ angular.module('blogger.admin.controller', [])
         }
 
 
-    }]).controller('postUpdateController', ['$scope', '$stateParams', '$state', function($scope, $stateParams, $state){
-        //$scope.post = Post.get({id : $stateParams.id});
+    }]).controller('postUpdateController', ['$scope', '$stateParams', 'adminService', function($scope, $stateParams, adminService){
         $scope.buttonText = "Update";
+        adminService.getEachPostDetails($stateParams.id, function(status, data){
+            $scope.postz = data.post;
+        });
 
         //$scope.updatePost = function(){
         //    $state.go('admin.postViewAll');
