@@ -87,7 +87,6 @@ module.exports = {
                 return res.send(400).json({success : false, message : "Post's Detail Not Found"});
             }
 
-            //console.log(results);
             var postData = {
                 title : results[0].title,
                 content : results[0].contents,
