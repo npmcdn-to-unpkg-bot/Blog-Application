@@ -13,7 +13,7 @@ var routes = require('./server/routes');
 
 db.dbconnect();
 
-app.use(cors());
+//app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());

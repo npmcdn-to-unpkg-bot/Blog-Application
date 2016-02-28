@@ -9,6 +9,5 @@ module.exports = function(app){
     app.put('/api/posts/:id', userController.tokenMiddleware, postController.updateArticle);
     app.get('/api/posts/:id', postController.showArticle);
     app.delete('/api/posts/:id', userController.tokenMiddleware, postController.destroyArticle);
-
     app.post('/api/posts/:id/comments', commentController.storeComment);
 }

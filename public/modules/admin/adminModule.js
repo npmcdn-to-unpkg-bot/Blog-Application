@@ -1,7 +1,7 @@
 /**
  * Created by Raphson on 2/25/16.
  */
-angular.module('blogger.admin', ['blogger.admin.controller']).config(['$stateProvider', function($stateProvider){
+angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.service']).config(['$stateProvider', function($stateProvider){
     $stateProvider.state('admin',{
         url: '/admin',
         abstract: true,
