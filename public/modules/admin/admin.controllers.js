@@ -17,7 +17,11 @@ angular.module('blogger.admin.controller', [])
 
 
             adminService.addPost(newPost, function(status, data){
-                $state.go('admin.postViewAll');
+                if(status){
+                    $state.go('admin.postViewAll');
+                }else{
+                    toastr.error("Error occurred. Creation Failed", 'Error', { timeOut: 2000 });
+                }
             });
         }
 

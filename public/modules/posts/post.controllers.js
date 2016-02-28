@@ -1,21 +1,18 @@
 /**
  * Created by Raphson on 2/23/16.
  */
-angular.module('blogger.posts.controller', []).controller('PostController', ['$scope', 'postService', function($scope,postService){
-    $scope.getallPosts = function(){
-        return postService.getAll();
-    };
+angular.module('blogger.posts.controller', [])
+    .controller('PostController', ['$scope', 'postService', 'adminService', function($scope, postService, adminService){
+        adminService.getPost().then(function(response){
+            $scope.posts = response.data;
+            console.log($scope.posts);
+        });
+    }]).controller('PostDetailsController', ['$stateParams', '$state','$scope', 'adminService', function($stateParams, $state, $scope, adminService){
+        adminService.getEachPostDetails($stateParams.id, function(status, data){
+            $scope.singlePost = data.post;
+        });
 
-    $scope.posts = $scope.getallPosts();
-
-}]).controller('PostDetailsController', ['$stateParams', '$state','$scope', 'postService', function($stateParams, $state, $scope, postService){
-    $scope.getPostById =  function(id){
-        return postService.getPostById(id);
-    };
-
-    $scope.closePost = function(){
-        $state.go('allPosts');
-    };
-
-    $scope.singlePost = $scope.getPostById($stateParams.id);
+        $scope.closePost = function(){
+            $state.go('allPosts');
+        };
 }]);

@@ -95,7 +95,8 @@ module.exports = {
                 keywords : results[0].keywords,
                 permalink : results[0].permalink,
                 author_name : results[0].author.name,
-                author_username : results[0].author.username
+                author_username : results[0].author.username,
+                datePublished : results[0].datePublished
             };
             postData.comments = results[1] || [];
             return res.status(200).json({success : true , post : postData});
