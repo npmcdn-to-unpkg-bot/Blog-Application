@@ -1,7 +1,7 @@
 angular.module('blogger.admin.controller', [])
     .controller('AdminController', ['$scope', function($scope){
 
-    }]).controller('postCreationController', ['$scope', '$state', 'adminService', function($scope, $state, adminService){
+    }]).controller('postCreationController', ['$scope', '$state','adminService', function($scope, $state, adminService){
 
         $scope.buttonText = "Create";
         $scope.savePost = function(){
@@ -22,7 +22,7 @@ angular.module('blogger.admin.controller', [])
         }
 
 
-    }]) .controller('postUpdateController', ['$scope', '$stateParams', '$state', 'adminService', function($scope, $stateParams, $state, adminService){
+    }]) .controller('postUpdateController', ['$scope', '$stateParams', '$state', 'adminService', 'toastr', function($scope, $stateParams, $state, adminService, toastr){
         $scope.buttonText = "Update";
         adminService.getEachPostDetails($stateParams.id, function(status, data){
             $scope.postz = data.post;
@@ -43,7 +43,7 @@ angular.module('blogger.admin.controller', [])
                 if(status){
                     $state.go('admin.postViewAll');
                 }else{
-
+                    toastr.error("Error occurred. Update Failed", 'Error', { timeOut: 2000 });
                 }
 
             })
