@@ -22,15 +22,32 @@ angular.module('blogger.admin.controller', [])
         }
 
 
-    }]).controller('postUpdateController', ['$scope', '$stateParams', 'adminService', function($scope, $stateParams, adminService){
+    }]) .controller('postUpdateController', ['$scope', '$stateParams', '$state', 'adminService', function($scope, $stateParams, $state, adminService){
         $scope.buttonText = "Update";
         adminService.getEachPostDetails($stateParams.id, function(status, data){
             $scope.postz = data.post;
         });
 
-        //$scope.updatePost = function(){
-        //    $state.go('admin.postViewAll');
-        //}
+        $scope.updatePost = function(){
+            $scope.buttonText = "Updating...";
+            var editedData = {
+                title : $scope.postz.title,
+                contents : $scope.postz.content,
+                tags : $scope.postz.tags,
+                keywords : $scope.postz.keywords,
+                permalink : $scope.postz.title.toLowerCase().replace(/[\s]/g, '-'),
+                token : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2Y2EyM2UzZTA5NDBmYjgyMmY4ZmQ4ZiIsInVzZXJuYW1lIjoiaWFtcmFwc2hvbiIsIm5hbWUiOiJBeWVuaSBPbHVzZWd1biIsImlhdCI6MTQ1NjYxNjE1NywiZXhwIjoxNDU2NzAyNTU3fQ.dqtrctwmaf6PXBSTmxTgYf7e7zfFBBXj7JDVMDQ0dcs'
+            };
+
+            adminService.updateEachUserDetails($stateParams.id, editedData, function(status, data){
+                if(status){
+                    $state.go('admin.postViewAll');
+                }else{
+
+                }
+
+            })
+        }
 
     }]).controller('postListController', ['$scope', '$state', 'adminService', 'popupService', function($scope, $state, adminService, popupService){
         adminService.getPost().then(function(response){

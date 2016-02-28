@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-8">
-        <form name="newPostForm" ng-switch="updatePost()" class="form-horizontal" novalidate role="form">
+        <form name="newPostForm" ng-submit="updatePost()" class="form-horizontal" novalidate role="form">
             <div class="form-group" ng-class="{'has-error':newPostForm.title.$dirty && newPostForm.title.$invalid}">
                 <label for="title" class="col-sm-2 control-label">Post Title</label>
                 <div class="col-sm-10">

@@ -25,6 +25,15 @@ angular.module('blogger.admin.service', []).
                         cb(false, response.data);
                     }
                 });
+            },
+            updateEachUserDetails : function(postId, post, cb){
+                $http.put('/api/posts/' + postId, post).then(function(response){
+                    if(response.data.success){
+                        cb(true, response.data);
+                    } else {
+                        cb(false, response.data);
+                    }
+                })
             }
         }
     }]).service('popupService', ['$window',function($window){
