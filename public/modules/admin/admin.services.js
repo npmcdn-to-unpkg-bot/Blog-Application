@@ -13,7 +13,13 @@ angular.module('blogger.admin.service', []).
                         cb(false, response.data);
                     }
                 });
+            },
+            getPost : function(){
+                return $http.get('/api/posts');
             }
         }
-
+    }]).service('popupService', ['$window',function($window){
+        this.showPopup = function(message){
+            return $window.confirm(message);
+        }
     }]);

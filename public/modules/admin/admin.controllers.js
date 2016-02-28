@@ -4,9 +4,6 @@ angular.module('blogger.admin.controller', [])
     }]).controller('postCreationController', ['$scope', '$state', 'adminService', function($scope, $state, adminService){
 
         $scope.buttonText = "Create";
-
-
-
         $scope.savePost = function(){
             $scope.buttonText = "Saving...";
             var newPost = {
@@ -20,11 +17,8 @@ angular.module('blogger.admin.controller', [])
 
 
             adminService.addPost(newPost, function(status, data){
-                alert(data.message);
-            });
-            /*$scope.post.$save(function(){
                 $state.go('admin.postViewAll');
-            })*/
+            });
         }
 
 
@@ -36,16 +30,15 @@ angular.module('blogger.admin.controller', [])
         //    $state.go('admin.postViewAll');
         //}
 
-    }]).controller('postListController', ['$scope', 'popupService', '$state', function($scope, popupService, $state){
-        //$scope.posts = Post.query();
+    }]).controller('postListController', ['$scope', '$state', 'adminService', 'popupService', function($scope, $state, adminService, popupService){
+        adminService.getPost().then(function(response){
+            $scope.posts = response.data;
+        });
 
-        /*$scope.deletePost = function(Post){
+
+        $scope.deletePost = function(Post){
             if(popupService.showPopup('Really delete this')){
-                post.$delete(function(){
-                    $state.go('admin.postViewAll', undefined , {
-                        reload: true
-                    });
-                });
+
             }
-        }*/
+        }
     }]);
