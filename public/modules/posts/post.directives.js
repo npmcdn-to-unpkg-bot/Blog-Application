@@ -9,6 +9,9 @@ angular.module('blogger.posts.directives', [])
                postInstance: '='
            },
            replace : true,
-           link: function(scope, )
+           link: function(scope, elem, attrs){
+
+           },
+           templateUrl : 'modules/posts/views/comments.html'
        }
     });
