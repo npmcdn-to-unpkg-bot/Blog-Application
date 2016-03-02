@@ -211,8 +211,8 @@ span.error-message{
 }
 
 .comments .form-control{
-    border-radius: 0;
-    padding: 20px;
+    /*border-radius: 0;
+    padding: 20px;*/
     margin-top: 5px;
 }
 
