@@ -10,7 +10,9 @@ angular.module('blogger.posts.directives', [])
            },
            replace : true,
            link: function(scope, elem, attrs){
-
+                scope.saveComment = function(){
+                    alert("ok");
+                }
            },
            templateUrl : 'modules/posts/views/comments.html'
        }
