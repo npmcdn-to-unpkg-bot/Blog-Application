@@ -42,6 +42,9 @@ angular.module('blogger.posts.services', [])
                     return this.posts[i];
                 }
             }
+        },
+        addCommentToAPost : function(postId, comment, cb){
+
         }
     }
 });

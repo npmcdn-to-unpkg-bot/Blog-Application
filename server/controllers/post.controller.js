@@ -90,6 +90,7 @@ module.exports = {
             var postData = {
                 title : results[0].title,
                 content : results[0].contents,
+                id : results[0]._id,
                 tags : results[0].tags,
                 keywords : results[0].keywords,
                 permalink : results[0].permalink,

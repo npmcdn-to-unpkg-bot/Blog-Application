@@ -7,9 +7,9 @@
         <input type="submit" value="Add" ng-click="saveComment()" class="form-control btn-success small-button" />
         <hr/>
         <div class="comments-list">
-            <div class="single-comment" ng-repeat="comment in postInstance.comments">
+            <div class="single-comment" ng-repeat="comment in postInstance.comments | orderBy : 'comment.datePublished' : true">
                 <div class="content">{{comment.content}}</div>
-                <div class="info">By: <span>{{comment.author}} </span> | On: <span>{{comment.datePublished | date:'MM-dd-yy'}}</span> </div>
+                <div class="info">By: <span>{{comment.author}} </span> | On: <span>{{comment.datePublished | date:'MM-dd-yy HH:MM:s'}}</span> </div>
             </div>
         </div>
     </div>

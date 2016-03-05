@@ -10,6 +10,7 @@ angular.module('blogger.posts.controller', [])
     }]).controller('PostDetailsController', ['$stateParams', '$state','$scope', 'adminService', function($stateParams, $state, $scope, adminService){
         adminService.getEachPostDetails($stateParams.id, function(status, data){
             $scope.singlePost = data.post;
+            //console.log($scope.singlePost);
         });
 
         $scope.closePost = function(){
