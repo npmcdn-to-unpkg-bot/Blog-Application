@@ -10,9 +10,7 @@ angular.module('blogger.posts.directives', [])
            },
            replace : true,
            link: function(scope, elem, attrs){
-
                 scope.saveComment = function(){
-                    //scope.comment.datePublished = new Date();
                     var newComment = {
                         datePublished : new Date(),
                         content : scope.comment.content,
@@ -21,7 +19,8 @@ angular.module('blogger.posts.directives', [])
                     scope.postInstance.comments.push(newComment);
                     scope.comment = {};
                     postService.addCommentToAPost(scope.postInstance.id, newComment, function(status, data){
-
+                        if(status)
+                            console.log(data.message);
                     });
 
                 }
