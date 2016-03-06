@@ -1,9 +1,13 @@
 angular.module('blogger.admin.controller', [])
-    .controller('AdminController', ['$rootScope' ,'$scope', '$state', 'adminService', function($rootScope, $scope, $state, adminService){
+    .controller('AdminController', ['$rootScope' ,'$scope', '$state', '$localStorage', 'adminService', function($rootScope, $scope, $state, $localStorage, adminService){
+        if($localStorage.blog_admin){
+            $rootScope.currentUser = $localStorage.blog_admin;
+        }
         $scope.logOut = function() {
             adminService.logout();
             $state.go('login');
         }
+
     }]).controller('postCreationController', ['$scope', '$state','adminService', function($scope, $state, adminService){
 
         $scope.buttonText = "Create";
