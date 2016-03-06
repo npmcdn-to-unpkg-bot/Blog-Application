@@ -1,7 +1,12 @@
 /**
  * Created by Raphson on 2/25/16.
  */
-angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.service']).config(['$stateProvider', function($stateProvider){
+angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.service', 'blogger.admin.filters']).config(['$stateProvider', function($stateProvider){
+    $stateProvider.state('login', {
+        url: '/login',
+        controller : 'LoginController',
+        templateUrl: 'modules/admin/views/login.html'
+    })
     $stateProvider.state('admin',{
         url: '/admin',
         abstract: true,

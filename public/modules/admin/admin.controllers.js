@@ -1,5 +1,5 @@
 angular.module('blogger.admin.controller', [])
-    .controller('AdminController', ['$scope', function($scope){
+    .controller('AdminController', ['$rootScope' ,'$scope', function($scope){
 
     }]).controller('postCreationController', ['$scope', '$state','adminService', function($scope, $state, adminService){
 
@@ -63,5 +63,22 @@ angular.module('blogger.admin.controller', [])
             if(popupService.showPopup('Really delete this')){
 
             }
+        }
+    }]).controller('LoginController', ['$rootScope', '$scope', '$localStorage', '$state', 'adminService',function($rootScope, $scope, $localStorage, $state, adminService){
+        $scope.buttonText = "Login";
+        $scope.login = function(){
+            $scope.buttonText = "Logging In...";
+            adminService.loginAdmin($scope.credentials.username, $scope.credentials.password, function(status, data){
+                if(status){
+                    $localStorage.blog_token = data.token;
+                    $localStorage.blog_admin = data.currentUser;
+                    $rootScope.currentUser = data.currentUser;
+                    $state.go('admin.postViewAll');
+                } else {
+                    $scope.credentials = {};
+                    $scope.invalidLogin = true;
+                    $scope.buttonText = "Login";
+                }
+            });
         }
     }]);
