@@ -18,8 +18,7 @@ angular.module('blogger.admin.controller', [])
                 contents : $scope.postz.content,
                 tags : $scope.postz.tags,
                 keywords : $scope.postz.keywords,
-                permalink : $scope.postz.title.toLowerCase().replace(/[\s]/g, '-'),
-                token : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2Y2EyM2UzZTA5NDBmYjgyMmY4ZmQ4ZiIsInVzZXJuYW1lIjoiaWFtcmFwc2hvbiIsIm5hbWUiOiJBeWVuaSBPbHVzZWd1biIsImlhdCI6MTQ1NjYxNjE1NywiZXhwIjoxNDU2NzAyNTU3fQ.dqtrctwmaf6PXBSTmxTgYf7e7zfFBBXj7JDVMDQ0dcs'
+                permalink : $scope.postz.title.toLowerCase().replace(/[\s]/g, '-')
             };
 
 
@@ -46,8 +45,7 @@ angular.module('blogger.admin.controller', [])
                 contents : $scope.postz.content,
                 tags : $scope.postz.tags,
                 keywords : $scope.postz.keywords,
-                permalink : $scope.postz.title.toLowerCase().replace(/[\s]/g, '-'),
-                token : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2Y2EyM2UzZTA5NDBmYjgyMmY4ZmQ4ZiIsInVzZXJuYW1lIjoiaWFtcmFwc2hvbiIsIm5hbWUiOiJBeWVuaSBPbHVzZWd1biIsImlhdCI6MTQ1NjYxNjE1NywiZXhwIjoxNDU2NzAyNTU3fQ.dqtrctwmaf6PXBSTmxTgYf7e7zfFBBXj7JDVMDQ0dcs'
+                permalink : $scope.postz.title.toLowerCase().replace(/[\s]/g, '-')
             };
 
             adminService.updateEachUserDetails($stateParams.id, editedData, function(status, data){
