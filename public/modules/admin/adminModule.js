@@ -11,6 +11,11 @@ angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.serv
         url: '/admin',
         abstract: true,
         controller: 'AdminController',
+        resolve : {
+            user : ['adminService', '$q', function(adminService, $q){
+                return adminService.getLoginUser() || $q.reject({unAuthorized:true});
+            }]
+        },
         templateUrl: 'modules/admin/views/admin-home.html'
     });
     $stateProvider.state('admin.postNew', {

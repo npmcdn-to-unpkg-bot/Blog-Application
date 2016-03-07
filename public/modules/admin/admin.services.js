@@ -67,6 +67,9 @@ angular.module('blogger.admin.service', []).
             },
             isLoggedIn : function(){
                 return ($localStorage.blog_token && $localStorage.blog_admin) ?  true : false;
+            },
+            getLoginUser : function(){
+                return $localStorage.blog_admin;
             }
         }
     }]).service('popupService', ['$window',function($window){
