@@ -66,7 +66,15 @@ angular.module('blogger.admin.controller', [])
 
         $scope.deletePost = function(Post){
             if(popupService.showPopup('Really delete this')){
-
+                adminService.deletePost(Post._id, function(status, data){
+                    if(status){
+                        $state.go('admin.postViewAll', undefined,{
+                            reload: true
+                        });
+                    }else{
+                        toastr.error("Error occurred. Can't Delete", 'Error', { timeOut: 2000 });
+                    }
+                })
             }
         }
     }]).controller('LoginController', ['$rootScope', '$scope', '$localStorage', '$state', 'adminService',function($rootScope, $scope, $localStorage, $state, adminService){

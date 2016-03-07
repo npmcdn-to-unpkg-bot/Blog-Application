@@ -26,6 +26,18 @@ angular.module('blogger.admin.service', []).
                     }
                 });
             },
+            deletePost : function(postId, cb){
+                $http.delete('/api/posts/' + postId).then(function(response){
+                   if(response.data.success){
+                       cb(true, response.data);
+                   } else {
+                       cb(false, response.data);
+                   }
+                }).catch(function(response){
+                    cb(false, response.data);
+                });
+            }
+            ,
             updateEachUserDetails : function(postId, post, cb){
                 $http.put('/api/posts/' + postId, post).then(function(response){
                     if(response.data.success){
