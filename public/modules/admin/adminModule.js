@@ -29,16 +29,31 @@ angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.serv
     $stateProvider.state('admin.postNew', {
         url: '/posts/new',
         controller: 'postCreationController',
+        resolve : {
+            user : ['adminService', '$q', function(adminService, $q){
+                return adminService.getLoginUser() || $q.reject({unAuthorized:true});
+            }]
+        },
         templateUrl: 'modules/admin/views/admin-new-post.html'
     });
     $stateProvider.state('admin.postUpdate', {
         url: '/posts/:id/edit',
         controller: 'postUpdateController',
+        resolve : {
+            user : ['adminService', '$q', function(adminService, $q){
+                return adminService.getLoginUser() || $q.reject({unAuthorized:true});
+            }]
+        },
         templateUrl: 'modules/admin/views/admin-update-post.html'
     });
     $stateProvider.state('admin.postViewAll', {
         url: '',
         controller: 'postListController',
+        resolve : {
+            user : ['adminService', '$q', function(adminService, $q){
+                return adminService.getLoginUser() || $q.reject({unAuthorized:true});
+            }]
+        },
         templateUrl: 'modules/admin/views/admin-all-posts.html'
     });
 
