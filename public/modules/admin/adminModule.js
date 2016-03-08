@@ -5,6 +5,14 @@ angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.serv
     $stateProvider.state('login', {
         url: '/login',
         controller : 'LoginController',
+        resolve : {
+            user : ['adminService', '$q', function(adminService, $q){
+                if(adminService.getLoginUser()){
+                    return  $q.reject({authorized:true});
+                }
+
+            }]
+        },
         templateUrl: 'modules/admin/views/login.html'
     })
     $stateProvider.state('admin',{
@@ -34,4 +42,16 @@ angular.module('blogger.admin', ['blogger.admin.controller', 'blogger.admin.serv
         templateUrl: 'modules/admin/views/admin-all-posts.html'
     });
 
+}]).run(['$rootScope', '$state', function($rootScope, $state){
+        $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+            if(error.unAuthorized) {
+                console.log('No Access');
+                $state.go('login');
+            }
+
+            if(error.authorized) {
+                console.log('Access');
+                $state.go('admin.postViewAll');
+            }
+        });
 }]);
